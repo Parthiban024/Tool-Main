@@ -8,7 +8,7 @@ function CollapsibleExample() {
   return (
     <Navbar collapseOnSelect expand="lg" className='nav_bg' variant="dark">
       <Container>
-        <Navbar.Brand href="#home"><img className='Obw_logo' src={Obj_logo} alt="BigCo Inc. logo" /></Navbar.Brand>
+        <Navbar.Brand href="/"><img className='Obw_logo' src={Obj_logo} alt="BigCo Inc. logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" >
           <Nav className="me-auto">
@@ -27,9 +27,9 @@ function CollapsibleExample() {
             </NavDropdown> */}
           </Nav>
           <Nav>
-          <Nav.Link href="#home" className='nav_font'>Home</Nav.Link>
-            <Nav.Link href="#tickets" className='nav_font'>Tickets</Nav.Link>
-            <Nav.Link eventKey={2} href="#submittickets" className='nav_font'>
+          <Nav.Link href="/" className='nav_font'>Home</Nav.Link>
+            <Nav.Link href="/login" className='nav_font'>Tickets</Nav.Link>
+            <Nav.Link eventKey={2} href="/form" className='nav_font'>
            Submit Tickets
             </Nav.Link>
           </Nav>

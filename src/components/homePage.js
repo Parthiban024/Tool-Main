@@ -22,7 +22,7 @@ const DashboardPage = () => {
         navigate('/form');
     };
     const handleTicketButtonClickTwo = () => {
-        navigate('/dashboard');
+        navigate('/login');
     };
 
     return (
