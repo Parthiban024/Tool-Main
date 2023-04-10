@@ -95,7 +95,7 @@ function Table() {
       </tr>
     ))}
   </tbody>
-                    </table>
+                    </table>  
                 </div>
             </div>
         </div>
