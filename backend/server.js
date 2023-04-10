@@ -3,15 +3,16 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const nodemailer = require("nodemailer");
+require('dotenv').config(); // load environment variables from .env file
 
-const app = express();
+const app = express();  
 
 app.use(cors());
 // setup body-parser middleware to parse request bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://ParthiGMR:Parthiban7548@parthibangmr.1quwer2.mongodb.net/IT-tool-one', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -134,6 +135,6 @@ app.put('/api/reviews/:id', (req, res) => {
     });
 });
 
-app.listen(8001, () => {
-  console.log('Server listening on port 8001');
+app.listen(process.env.PORT, () => {
+  console.log(`Server listening on port ${process.env.PORT}`);
 });
