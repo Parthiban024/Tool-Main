@@ -29,7 +29,7 @@ function EmployeeForm() {
     event.preventDefault();
 
     const formData = {
-      id: id,
+ 
       employeeName: employeeName,
       employeeId: employeeId,
       emailId: emailId,
@@ -53,15 +53,15 @@ function EmployeeForm() {
     //     console.log(err.message)
     //   })  
     // };
-    axios
-      .post('http://localhost:8001/api/reviews', formData)
+    axios.post('http://localhost:8001/api/reviews', formData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-      Swal.fire(
-                 'Employee Removed Successfully!',
+       Swal.fire(
+                 'Your ticket has been sent to the IT-team!',
                   'You clicked the button!',
                    'success'
                  )
+                 window.location="/viewstatus"
     window.location.reload();
 
   };
@@ -144,7 +144,7 @@ function EmployeeForm() {
             </div>
             <div>
               <FormControl sx={{ minWidth: 120 }} size="small">
-                <InputLabel id="demo-select-small">Select One</InputLabel>
+                <InputLabel id="demo-select-small">Select Issue</InputLabel>
                 <Select
                   sx={{ width: 328 }}
                   labelId="demo-select-small"
@@ -157,9 +157,9 @@ function EmployeeForm() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value="Software issue">Software issue</MenuItem>
+                  <MenuItem value="Hardware issue">Hardware issue</MenuItem>
+                  <MenuItem value="Others">Others</MenuItem>
                 </Select>
               </FormControl>
             </div>
