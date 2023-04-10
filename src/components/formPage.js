@@ -10,7 +10,7 @@ import { TextareaAutosize } from "@mui/material/TextareaAutosize";
 import axios from 'axios';
 import Navbar from "./navbarPage"
 import Swal from "sweetalert2";
-function EmployeeForm() {
+function EmployeeForm() { 
   const [id, idchange] = useState("");
   const [employeeName, setEmployeeName] = useState('');
   const [employeeId, setEmployeeId] = useState('');
