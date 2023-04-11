@@ -3,19 +3,17 @@ import axios from 'axios';
 import Navbar from "./navbarPage"
 import Swal from "sweetalert2";
 import { Route, Routes, Navigate, Link, useNavigate } from "react-router-dom";
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-
 function Table() {
   const [review, setReviews] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8001/api/reviews').then((response) => {
+    axios.get('http://localhost:8001/api/timechamp').then((response) => {
       setReviews(response.data);
     });
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:8001/api/reviews/${id}`).then(() => {
+    axios.delete(`http://localhost:8001/api/timechamp/${id}`).then(() => {
       // remove the deleted review from the local state
       const updatedReviews = review.filter((r) => r._id !== id);
       setReviews(updatedReviews);
@@ -37,6 +35,7 @@ function Table() {
     });
   };
 
+
   return (
     <div>
       <Navbar />
@@ -45,27 +44,23 @@ function Table() {
       </div>
       <div className='hm_sec_3'>
         <div className='container  d-flex justify-content-center '>
-          <table id="table-to-xls" className="table table-hover tablePage">
+          <table className="table table-hover tablePage">
             <thead className="thead_bg">
               <tr>
                 <th>Employee Name</th>
                 <th>Employee ID</th>
                 <th>Email</th>
                 <th>System No</th>
-                <th>Issue</th>
-                <th>Description</th>
                 <th colSpan="2">Actions</th>
               </tr>
             </thead>
             <tbody>
               {review.map((r) => (
                 <tr key={r._id}>
-                  <td>{r.employeeName}</td>
-                  <td>{r.employeeId}</td>
-                  <td>{r.emailId}</td>
-                  <td>{r.systemNo}</td>
-                  <td>{r.systemType}</td>
-                  <td>{r.description}</td>
+                  <td>{r.employeeNameTwo}</td>
+                  <td>{r.employeeIdTwo}</td>
+                  <td>{r.emailIdTwo}</td>
+                  <td>{r.systemTypeTwo}</td>
                   <td>
                     <Link to={`/edit/${r._id}`}>
                       <i className="fa fa-edit"></i>
@@ -83,19 +78,12 @@ function Table() {
               ))}
             </tbody>
           </table>
-          <ReactHTMLTableToExcel
-            id="test-table-xls-button"
-            className="btn btn-success btn-sm"
-            table="table-to-xls"
-            filename="reviews"
-            sheet="reviews"
-            buttonText="Export to Excel"
-            excludeColumns="[5]"
-          />
         </div>
       </div>
     </div>
   );
 }
+
+
 
 export default Table;

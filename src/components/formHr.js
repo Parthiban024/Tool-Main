@@ -10,51 +10,41 @@ import { TextareaAutosize } from "@mui/material/TextareaAutosize";
 import axios from 'axios';
 import Navbar from "./navbarPage"
 import Swal from "sweetalert2";
-function EmployeeForm() { 
+function HrForm() { 
   const [id, idchange] = useState("");
-  const [employeeName, setEmployeeName] = useState('');
-  const [employeeId, setEmployeeId] = useState('');
-  const [emailId, setEmailId] = useState('');
-  const [systemNo, setSystemNo] = useState('');
-  const [systemType, setSystemType] = useState('');
-  const [unitNo, setUnitNo] = useState('');
-  const [floorNo, setFloorNo] = useState('');
-  const [teamName, setTeamName] = useState('');
-  const [teamManager, setTeamManager] = useState('');
-  const [priority, setPriority] = useState('');
-  const [issueDate, setIssueDate] = useState('');
-  const [description, setDescription] = useState('');
+  const [employeeNameThree, setEmployeeNameThree] = useState('');
+  const [employeeIdThree, setEmployeeIdThree] = useState('');
+  const [emailIdThree, setEmailIdThre] = useState('');
+  const [systemNoThree, setSystemNoThree] = useState('');
+  const [systemTypeThree, setSystemTypeThree] = useState('');
+  const [unitNoThree, setUnitNoThree] = useState('');
+  const [floorNoThree, setFloorNoThree] = useState('');
+  const [teamNameThree, setTeamNameThree] = useState('');
+  const [teamManagerThree, setTeamManagerThree] = useState('');
+  const [priorityThree, setPriorityThree] = useState('');
+  const [issueDateThree, setIssueDateThree] = useState('');
+  const [descriptionThree, setDescriptionThree] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const formData = {
  
-      employeeName: employeeName,
-      employeeId: employeeId,
-      emailId: emailId,
-      systemNo: systemNo,
-      systemType: systemType,
-      unitNo: unitNo,
-      floorNo: floorNo,
-      teamName: teamName,
-      teamManager: teamManager,
-      priority: priority,
-      issueDate: issueDate,
-      description: description
+      employeeNameThree: employeeNameThree,
+      employeeIdThree: employeeIdThree,
+      emailIdThree: emailIdThree,
+      systemNoThree: systemNoThree,
+      systemTypeThree: systemTypeThree,
+      unitNoThree: unitNoThree,
+      floorNoThree: floorNoThree,
+      teamNameThree: teamNameThree,
+      teamManagerThree: teamManagerThree,
+      priorityThree: priorityThree,
+      issueDateThree: issueDateThree,
+      descriptionThree: descriptionThree
     };
-  
-    axios.post('http://localhost:8001/api/reviews', formData)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-       Swal.fire(
-                 'Your ticket has been sent to the IT-team!',
-                  'You clicked the button!',
-                   'success'
-                 )
 
-
-  };
+};
 
   return (
     <div>
@@ -81,8 +71,8 @@ function EmployeeForm() {
                 size="small"
                 className="email_login"
                 type="text"
-                value={employeeName}
-                onChange={(event) => setEmployeeName(event.target.value)}
+                value={employeeNameThree}
+                onChange={(event) => setEmployeeNameThree(event.target.value)}
 
                 required
               />
@@ -96,8 +86,8 @@ function EmployeeForm() {
                 size="small"
                 className="email_login"
                 type="number"
-                value={employeeId}
-                onChange={(event) => setEmployeeId(event.target.value)}
+                value={employeeIdThree}
+                onChange={(event) => setEmployeeIdThree(event.target.value)}
 
                 required
               />
@@ -111,7 +101,7 @@ function EmployeeForm() {
                 size="small"
                 className="email_login"
                 type="email"
-                value={emailId} onChange={(event) => setEmailId(event.target.value)}
+                value={emailIdThree} onChange={(event) => setEmailIdThre(event.target.value)}
 
                 required
               />
@@ -127,8 +117,8 @@ function EmployeeForm() {
                 size="small"
                 className="email_login"
                 type="text"
-                value={systemNo}
-                onChange={(event) => setSystemNo(event.target.value)}
+                value={systemNoThree}
+                onChange={(event) => setSystemNoThree(event.target.value)}
                 required
               />
             </div>
@@ -139,8 +129,8 @@ function EmployeeForm() {
                   sx={{ width: 328 }}
                   labelId="demo-select-small"
                   id="demo-select-small"
-                  value={systemType}
-                  onChange={(event) => setSystemType(event.target.value)}
+                  value={systemTypeThree}
+                  onChange={(event) => setSystemTypeThree(event.target.value)}
                   label="Select One"
 
                 >
@@ -164,8 +154,8 @@ function EmployeeForm() {
                 size="small"
                 className="email_login"
                 type="number"
-                value={unitNo}
-                onChange={(event) => setUnitNo(event.target.value)}
+                value={unitNoThree}
+                onChange={(event) => setUnitNoThree(event.target.value)}
                 required
               />
             </div>
@@ -178,8 +168,8 @@ function EmployeeForm() {
                 size="small"
                 className="email_login"
                 type="number"
-                value={floorNo}
-                onChange={(event) => setFloorNo(event.target.value)}
+                value={floorNoThree}
+                onChange={(event) => setFloorNoThree(event.target.value)}
                 required
               />
             </div>
@@ -194,8 +184,8 @@ function EmployeeForm() {
                 size="small"
                 className="email_login"
                 type="text"
-                value={teamName}
-                onChange={(event) => setTeamName(event.target.value)}
+                value={teamNameThree}
+                onChange={(event) => setTeamNameThree(event.target.value)}
                 required
               />
             </div>
@@ -208,8 +198,8 @@ function EmployeeForm() {
                 size="small"
                 className="email_login"
                 type="text"
-                value={teamManager}
-                onChange={(event) => setTeamManager(event.target.value)}
+                value={teamManagerThree}
+                onChange={(event) => setTeamManagerThree(event.target.value)}
                 required
               />
             </div>
@@ -222,8 +212,8 @@ function EmployeeForm() {
                   sx={{ width: 320 }}
                   labelId="demo-select-small"
                   id="demo-select-small"
-                  value={priority}
-                  onChange={(event) => setPriority(event.target.value)}
+                  value={priorityThree}
+                  onChange={(event) => setPriorityThree(event.target.value)}
                   label="Select Priority"
                   >
                   <MenuItem value="">
@@ -243,15 +233,15 @@ function EmployeeForm() {
                 size="small"
                 className="email_login"
                 type="date"
-                value={issueDate}
-                onChange={(event) => setIssueDate(event.target.value)}
+                value={issueDateThree}
+                onChange={(event) => setIssueDateThree(event.target.value)}
                 required
               />
             </div>
           </div>
           <div className='mt-5'>
             <div class="form-floating">
-              <textarea value={description} onChange={(event) => setDescription(event.target.value)} class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{ height: 100 }}></textarea>
+              <textarea value={descriptionThree} onChange={(event) => setDescriptionThree(event.target.value)} class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{ height: 100 }}></textarea>
               <label for="floatingTextarea2">Comments</label>
             </div>
             </div>
@@ -265,4 +255,4 @@ function EmployeeForm() {
   );
 }
 
-export default EmployeeForm;
+export default HrForm;

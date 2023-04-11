@@ -22,9 +22,11 @@ const DashboardPage = () => {
         navigate('/form');
     };
     const handleTicketButtonClickTwo = () => {
-        navigate('/login');
+        navigate('/formTimechamp');
     };
-
+    const handleTicketButtonClickThree = () => {
+        navigate('/formHr');
+    };
     return (
         <div className="">
             <Navbar />
@@ -32,12 +34,12 @@ const DashboardPage = () => {
                 <h1>Hi, how can we help you?</h1>
             </div>
             <div className="hm_sec_3">
-                <div className="d-flex card_hm justify-content-center align-items-center">
-                    <CardGroup>
-                        <Card className="card_one">
+                <div className="d-flex card_hm justify-content-center align-items-center ">
+                    <CardGroup className="d-flex gap-5">
+                        <Card className="card_two">
                             <Card.Body>
                                 <Card.Title className="text-center">
-                                    Submit a ticket
+                                   System Issue
                                 </Card.Title>
                                 <p className="text-center">(User's Only)</p>
                                 <Card.Text className="text-center">
@@ -50,13 +52,27 @@ const DashboardPage = () => {
                         </Card>
                         <Card className="card_two">
                             <Card.Body>
-                                <Card.Title className="text-center">View all tickets</Card.Title>
+                                <Card.Title className="text-center">TimeChamp Issue</Card.Title>
                                 <p className="text-center">(Admin's Only)</p>
                                 <Card.Text className="text-center">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </Card.Text>
                                 <div className="d-flex justify-content-center">
-                                    <a className="btn btn-primary btn_hm" onClick={handleTicketButtonClickTwo}>Ticket list</a>
+                                    <a className="btn btn-primary btn_hm" onClick={handleTicketButtonClickTwo}>Rise a ticket</a>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                        <Card className="card_two">
+                            <Card.Body>
+                                <Card.Title className="text-center">
+                                   HR Issue
+                                </Card.Title>
+                                <p className="text-center">(User's Only)</p>
+                                <Card.Text className="text-center">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </Card.Text>
+                                <div className="d-flex justify-content-center ">
+                                    <a className="btn btn-primary btn_hm" onClick={handleTicketButtonClickThree}>Rise a ticket</a>
                                 </div>
                             </Card.Body>
                         </Card>
