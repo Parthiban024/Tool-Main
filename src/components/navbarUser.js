@@ -12,7 +12,7 @@ function CollapsibleExample() {
     // Simulate loading delay for 2 seconds
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 700);
   }, []);
 
   if (isLoading) {
@@ -41,10 +41,10 @@ function CollapsibleExample() {
         <Nav className="me-auto"></Nav>
           <Nav>
           <Nav.Link href="/" className='nav_font home_one'>Home</Nav.Link>
-            <NavDropdown title="Admin" id="collasible-nav-dropdown" className='nav_font dropmain'>
-              <NavDropdown.Item href="/login" className='drophover'>Admin Dashboard</NavDropdown.Item>
-              <NavDropdown.Item href="/loginTC" className='drophover'>TimeChamp Dashboard</NavDropdown.Item>
-              <NavDropdown.Item href="/loginHR" className='drophover'>HR Dashboard</NavDropdown.Item>
+            <NavDropdown title="Submit a Ticket's" id="collasible-nav-dropdown" className='nav_font dropmain'>
+              <NavDropdown.Item href="/form" className='drophover'>System Issue</NavDropdown.Item>
+              <NavDropdown.Item href="/formTimeChamp" className='drophover'>TimeChamp Issue</NavDropdown.Item>
+              <NavDropdown.Item href="/formHr" className='drophover'>HR Issue</NavDropdown.Item>
             </NavDropdown>
 
           </Nav>

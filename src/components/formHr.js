@@ -8,7 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TextareaAutosize } from "@mui/material/TextareaAutosize";
 import axios from 'axios';
-import Navbar from "./navbarPage"
+import Navbar from "./navbarUser"
 import Swal from "sweetalert2";
 function HrForm() { 
   const [id, idchange] = useState("");
@@ -28,7 +28,7 @@ function HrForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const formData = {
+    const formDataThree = {
  
       employeeNameThree: employeeNameThree,
       employeeIdThree: employeeIdThree,
@@ -43,6 +43,18 @@ function HrForm() {
       issueDateThree: issueDateThree,
       descriptionThree: descriptionThree
     };
+    
+    axios.post('http://localhost:8001/api/hrreview', formDataThree)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+     Swal.fire(
+               'Your ticket has been sent to the IT-team!',
+                'You clicked the button!',
+                 'success'
+               )
+  
+  
+
 
 };
 
@@ -50,7 +62,7 @@ function HrForm() {
     <div>
       <Navbar />
       <div className='sec_two d-flex justify-content-center align-items-center'>
-      <h1>CREATE A TICKET</h1>
+      <h1>Create a HR Team Ticket</h1>
       </div>
       <div className='hm_sec_3'>
       <div className='container  d-flex justify-content-center '>

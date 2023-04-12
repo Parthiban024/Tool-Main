@@ -8,7 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TextareaAutosize } from "@mui/material/TextareaAutosize";
 import axios from 'axios';
-import Navbar from "./navbarPage"
+import Navbar from "./navbarUser"
 import Swal from "sweetalert2";
 function EmployeeForm() { 
   const [id, idchange] = useState("");
@@ -52,7 +52,7 @@ function EmployeeForm() {
                   'You clicked the button!',
                    'success'
                  )
-
+window.location="/"
 
   };
 
@@ -60,7 +60,7 @@ function EmployeeForm() {
     <div>
       <Navbar />
       <div className='sec_two d-flex justify-content-center align-items-center'>
-      <h1>CREATE A TICKET</h1>
+      <h1>Create a Admin's Ticket</h1>
       </div>
       <div className='hm_sec_3'>
       <div className='container  d-flex justify-content-center '>
@@ -229,8 +229,8 @@ function EmployeeForm() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value="High-Priority">High Priority</MenuItem>
-                  <MenuItem value="Low-Priority">Low Priority</MenuItem>
+                  <MenuItem value="High">High Priority</MenuItem>
+                  <MenuItem value="Low">Low Priority</MenuItem>
                   </Select>
               </FormControl>
             </div>

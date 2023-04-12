@@ -8,7 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { TextareaAutosize } from "@mui/material/TextareaAutosize";
 import axios from 'axios';
-import Navbar from "./navbarPage"
+import Navbar from "./navbarUser"
 import Swal from "sweetalert2";
 
 
@@ -64,7 +64,7 @@ function TimechampForm() {
     <div>
       <Navbar />
       <div className='sec_two d-flex justify-content-center align-items-center'>
-      <h1>CREATE A TICKET</h1>
+      <h1>Create a Timechamp Ticket</h1>
       </div>
       <div className='hm_sec_3'>
       <div className='container  d-flex justify-content-center '>

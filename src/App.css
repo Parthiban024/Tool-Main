@@ -18,6 +18,7 @@
 }
 .nav_font:hover{
     color: #fc6140 !important;
+    transition: 0.5s;
 }
 .nav_font:active{
     color: #fc6140 !important;
@@ -158,4 +159,135 @@
 .login_icon{
     font-size: 50px;
     margin-top: 30px;
+}
+.table_main{
+    margin-top: -130px !important;
+    margin-right: 120px;
+    float: right;
+}
+.table_main:hover{
+    box-shadow: 0 6px 19px rgba(39,49,58,0.1) !important; 
+}
+
+/* navbar */
+
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: var(--bs-navbar-nav-link-padding-x);
+    padding-left: var(--bs-navbar-nav-link-padding-x);
+    color: black;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover{
+    color: #fc6140;
+    transition: 0.5s;
+}
+
+.bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: ghostwhite !important;
+}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+    clear: both;
+    font-weight: 400;
+    color: black !important;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+.dropmain{
+  position: fixed;
+ 
+}
+.drophover:hover{
+    color: #fc6140 !important;
+}
+.drophover:active{
+    color: black !important;
+    background-color: #fc6140 !important;
+}
+
+
+/* loading screen animation */
+.loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fffef9;
+  }
+  
+  .loading-circle {
+    width: 30px;
+    height: 30px;
+    border: 5px solid #fc6140;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+.home_one{
+    float: left !important;
+}
+  .loading-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .loading-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fc6140;
+    margin: 0 6px;
+    animation: dot-bounce 0.5s infinite ease-in-out;
+  }
+  
+  .loading-dot:nth-child(1) {
+    animation-delay: 0ms;
+  }
+  
+  .loading-dot:nth-child(2) {
+    animation-delay: 100ms;
+  }
+  
+  .loading-dot:nth-child(3) {
+    animation-delay: 200ms;
+  }
+  
+  @keyframes dot-bounce {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .dropdown-menu[data-bs-popper] {
+    top: 100%;
+    left: -20px !important;
+    margin-top: var(--bs-dropdown-spacer);
+}
+
+.checkbox_main{
+    font-size: 100px;
 }

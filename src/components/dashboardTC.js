@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from "./navbarPage"
 import Swal from "sweetalert2";
 import { Route, Routes, Navigate, Link, useNavigate } from "react-router-dom";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 function Table() {
   const [review, setReviews] = useState([]);
 
@@ -34,13 +35,96 @@ function Table() {
       });
     });
   };
+  const handleAccept = (ticket) => {
+    axios.post('http://localhost:8001/api/accepttc', ticket).then((res) => {
+      // send email to user using nodemailer
+      const emailData = {
+        to: ticket.emailId,
+        subject: 'Ticket Accepted',
+        text: 'Your ticket has been accepted by the IT team.'
+      };
+      axios.post('http://localhost:8001/api/send-emailtc', emailData).then((res) => {
+        // show success message
+        Swal.fire({
+          title: 'Success',
+          text: 'The ticket has been accepted and an email has been sent to the user.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        // reload the page to update the table
+      }).catch(() => {
+        // show error message
+        Swal.fire({
+          title: 'Error',
+          text: 'There was an error sending the email.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      });
+    }).catch(() => {
+      // show error message
+      Swal.fire({
+        title: 'Error',
+        text: 'There was an error accepting the ticket.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+  };
 
+  const handleResolve = (ticket) => {
+    axios.post('http://localhost:8001/api/resolvetc', ticket).then((res) => {
+      // send email to user using nodemailer
+      const emailData = {
+        to: ticket.emailId,
+        subject: 'Ticket Resolved',
+        text: 'Your ticket has been resolved by the IT team.'
+      };
+      axios.post('http://localhost:8001/api/send-emailtc', emailData).then((res) => {
+        // show success message
+        Swal.fire({
+          title: 'Success',
+          text: 'The ticket has been resolved and an email has been sent to the user.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        // reload the page to update the table
+      }).catch(() => {
+        // show error message
+        Swal.fire({
+          title: 'Error',
+          text: 'There was an error sending the email.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      });
+    }).catch(() => {
+      // show error message
+      Swal.fire({
+        title: 'Error',
+        text: 'There was an error resolving the ticket.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+  };
 
   return (
     <div>
       <Navbar />
       <div className='sec_two d-flex justify-content-center align-items-center'>
-        <h1>ADMIN PANEL</h1>
+        <h1>Timecahmp Panel</h1>
+      </div>
+      <div>
+        <ReactHTMLTableToExcel
+          id="test-table-xls-button"
+          className="btn btn-success btn-sm table_main"
+          table="table-to-xls"
+          filename="reviews"
+          sheet="reviews"
+          buttonText="Export to Excel"
+          excludeColumns="[5]"
+        />
       </div>
       <div className='hm_sec_3'>
         <div className='container  d-flex justify-content-center '>
@@ -52,6 +136,8 @@ function Table() {
                 <th>Email</th>
                 <th>System No</th>
                 <th colSpan="2">Actions</th>
+                <th>Accept</th>
+                <th>Resolve</th>
               </tr>
             </thead>
             <tbody>
@@ -73,6 +159,16 @@ function Table() {
                     >
                       <i className="fa fa-trash"></i>
                     </button>
+                  </td>
+                  <td>
+                    <input type="checkbox" className="btn btn-primary btn-sm checkbox_main" onClick={() => handleAccept(r)}/>
+                      {/* <i className="fa fa-check"></i>
+                    </button> */}
+                  </td>
+                  <td>
+                    <input type='checkbox' className="btn btn-success btn-sm" onClick={() => handleResolve(r)} />
+                      {/* <i className="fa fa-check-square"></i>
+                    </button> */}
                   </td>
                 </tr>
               ))}

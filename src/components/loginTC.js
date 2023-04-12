@@ -14,10 +14,10 @@ const LoginPage = ({ handleLogin }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Check if the username and password are correct
-    if (username === 'adminMain' && password === 'Code-green') {
+    if (username === 'adminMain' && password === 'Code-red') {
       // Call the handleLogin function passed down from the parent component
     //   handleLogin();
-      window.location='/dashboard'
+      window.location='/dashboardTC'
     } else {
       alert('Invalid username or password');
     }
@@ -27,7 +27,7 @@ const LoginPage = ({ handleLogin }) => {
     <div>
         <Navbar/>
         <div className='sec_two d-flex justify-content-center align-items-center'>
-      <h1>Admin's Login</h1>
+      <h1>Timechamp Team Login</h1>
       </div>
       <div className='hm_sec_3'>
         <div className='container  d-flex justify-content-center '>
