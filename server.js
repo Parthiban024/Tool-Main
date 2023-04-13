@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const nodemailer = require("nodemailer");
-const router = require('./routes/router');
+const router = require('../IT-tool/backend/routes/router');
 const path = require('path')
 require('dotenv').config(); // load environment variables from .env file
 
