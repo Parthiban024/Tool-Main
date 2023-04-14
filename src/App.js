@@ -10,8 +10,9 @@ import DashboardHR from "./components/dashboardHR"
 import LoginPage from "./components/loginPage"
 import LoginPageTwo from "./components/loginTC"
 import LoginPageThree from "./components/loginHR"
-import ViewPage from "./components/viewPage"
-import ReviewDetails from './components/viewPage';
+import ReviewDetails from './components/viewPage'
+import ViewPageTwo from "./components/viewPageTC"
+import ViewPageThree from "./components/viewPageHR"
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route, Switch, BrowserRouter } from 'react-router-dom';
 
@@ -29,10 +30,11 @@ function App() {
           <Route path="/dashboardTC" exact element={<DashboardTC />} />
           <Route path="/dashboardHR" exact element={<DashboardHR />} />
           <Route path="/review/:id" element={<ReviewDetails />} />
+          <Route path="/reviewtwo/:id" element={<ViewPageTwo />} />
+          <Route path="/reviewthree/:id" element={<ViewPageThree />} />
           <Route path="/login" exact element={<LoginPage />} />
           <Route path="/loginTC" exact element={<LoginPageTwo />} />
           <Route path="/loginHR" exact element={<LoginPageThree />} />
-          <Route path="/viewMain" exact element={<ViewPage />} />
         </Routes>
       </BrowserRouter>
     </div>

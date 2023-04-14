@@ -57,7 +57,7 @@ function TimechampForm() {
                'success'
              )
 
-
+             window.location="/"
 };
 
   return (
@@ -151,8 +151,8 @@ function TimechampForm() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value="Software issue">Software issue</MenuItem>
-                  <MenuItem value="Hardware issue">Hardware issue</MenuItem>
+                  <MenuItem value="TimeChamp Login Issue">TimeChamp Login Issue</MenuItem>
+                  <MenuItem value="Loading Issue">Loading Issue</MenuItem>
                   <MenuItem value="Others">Others</MenuItem>
                 </Select>
               </FormControl>

@@ -7,6 +7,8 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 function Table() {
   const [review, setReviews] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios.get('http://localhost:8001/api/hrreview').then((response) => {
       setReviews(response.data);
@@ -39,7 +41,7 @@ function Table() {
     axios.post('http://localhost:8001/api/accepthr', ticket).then((res) => {
       // send email to user using nodemailer
       const emailData = {
-        to: ticket.emailId,
+        to: ticket.emailIdThree,
         subject: 'Ticket Accepted',
         text: 'Your ticket has been accepted by the IT team.'
       };
@@ -76,7 +78,7 @@ function Table() {
     axios.post('http://localhost:8001/api/resolvehr', ticket).then((res) => {
       // send email to user using nodemailer
       const emailData = {
-        to: ticket.emailId,
+        to: ticket.emailIdThree,
         subject: 'Ticket Resolved',
         text: 'Your ticket has been resolved by the IT team.'
       };
@@ -108,7 +110,10 @@ function Table() {
       });
     });
   };
-
+  const handleViewDetails = (id) => {
+    const selectedReview = review.find((r) => r._id === id);
+    navigate(`/reviewthree/${id}`, { state: { review: selectedReview } });
+    };
   return (
     <div>
       <Navbar />
@@ -128,14 +133,19 @@ function Table() {
           </div>
       <div className='hm_sec_3'>
         <div className='container  d-flex justify-content-center '>
-          <table className="table table-hover tablePage">
+        <table id="table-to-xls" className="table table-hover tablePage">
             <thead className="thead_bg">
               <tr>
                 <th>Employee Name</th>
                 <th>Employee ID</th>
                 <th>Email</th>
+                <th>Priority</th>
                 <th>System No</th>
-                <th colSpan="2">Actions</th>
+                <th>Issue</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>View</th>
+                <th>Remove</th>
                 <th>Accept</th>
                 <th>Resolve</th>
               </tr>
@@ -146,31 +156,47 @@ function Table() {
                   <td>{r.employeeNameThree}</td>
                   <td>{r.employeeIdThree}</td>
                   <td>{r.emailIdThree}</td>
+                  <td>{r.priorityThree}</td>
+                  <td>{r.systemNoThree}</td>
                   <td>{r.systemTypeThree}</td>
+                  <td>{r.descriptionThree}</td>
+                  <td>{r.issueDateThree}</td>
                   <td>
-                    <Link to={`/edit/${r._id}`}>
-                      <i className="fa fa-edit"></i>
-                    </Link>
-                  </td>
+                <button
+                  className="btn btn-info btn-sm ms-1"
+                  onClick={() => handleViewDetails(r._id)}
+                >
+                  <i className="fa fa-eye"></i>
+                </button>
+              </td>
                   <td>
+                  {review.map((review) => (
+          <tr key={review._id}>
+            <Link to={{ pathname: `/reviewthree/${review._id}`, state: { review } }}>
+             
+            </Link>
+          </tr>
+        ))} 
+              <td>
                     <button
-                      className="btn btn-danger btn-sm"
+                      className="btn btn-danger btn-sm ms-3"
                       onClick={() => handleDelete(r._id)}
                     >
                       <i className="fa fa-trash"></i>
                     </button>
                   </td>
+                  </td>
                   <td>
-                    <input type="checkbox" className="btn btn-primary btn-sm checkbox_main" onClick={() => handleAccept(r)}/>
+                    <input type="checkbox" className="btn btn-primary btn-sm checkbox_main ms-3" onClick={() => handleAccept(r)}/>
                       {/* <i className="fa fa-check"></i>
                     </button> */}
                   </td>
                   <td>
-                    <input type='checkbox' className="btn btn-success btn-sm" onClick={() => handleResolve(r)} />
+                    <input type='checkbox' className="btn btn-success btn-sm ms-3" onClick={() => handleResolve(r)} />
                       {/* <i className="fa fa-check-square"></i>
                     </button> */}
                   </td>
-                </tr>
+                  </tr>
               ))}
             </tbody>
           </table>

@@ -7,6 +7,7 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Swal from "sweetalert2";
 const LoginPage = ({ handleLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +20,12 @@ const LoginPage = ({ handleLogin }) => {
     //   handleLogin();
       window.location='/dashboard'
     } else {
-      alert('Invalid username or password');
+      Swal.fire({
+        title: 'Error',
+        text: 'Username or Password is wrong.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
     }
   };
 

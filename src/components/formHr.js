@@ -53,7 +53,7 @@ function HrForm() {
                  'success'
                )
   
-  
+               window.location="/"
 
 
 };
@@ -149,8 +149,11 @@ function HrForm() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value="Software issue">Software issue</MenuItem>
-                  <MenuItem value="Hardware issue">Hardware issue</MenuItem>
+                  <MenuItem value="PF & ESI">PF & ESI</MenuItem>
+                  <MenuItem value="Salary Issue">Salary Issue</MenuItem>
+                  <MenuItem value="Facilities">Facilities</MenuItem>
+                  <MenuItem value="Salary Issue">Offer Letter</MenuItem>
+                  <MenuItem value="Salary Issue">ID-Card</MenuItem>
                   <MenuItem value="Others">Others</MenuItem>
                 </Select>
               </FormControl>
