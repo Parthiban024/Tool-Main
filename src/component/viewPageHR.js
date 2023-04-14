@@ -3,10 +3,10 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 function ReviewDetails() {
 
- 
-        const location = useLocation();
-        const { review } = location.state;
-      
+
+  const location = useLocation();
+  const { review } = location.state;
+
   return (
     <div>
       <h2>Review Details</h2>

@@ -1,18 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import Home from "./components/homePage"
-import Form from "./components/formPage"
-import FormTwo from "./components/formTimechamp"
-import FormThree from "./components/formHr"
-import Dashboard from "./components/dashboardPage"
-import DashboardTC from "./components/dashboardTC"
-import DashboardHR from "./components/dashboardHR"
-import LoginPage from "./components/loginPage"
-import LoginPageTwo from "./components/loginTC"
-import LoginPageThree from "./components/loginHR"
-import ReviewDetails from './components/viewPage'
-import ViewPageTwo from "./components/viewPageTC"
-import ViewPageThree from "./components/viewPageHR"
+import Home from "./component/homePage"
+import Form from "./component/formPage"
+import FormTwo from "./component/formTimechamp"
+import FormThree from "./component/formHr"
+import Dashboard from "./component/dashboardPage"
+import DashboardTC from "./component/dashboardTC"
+import DashboardHR from "./component/dashboardHR"
+import LoginPage from "./component/loginPage"
+import LoginPageTwo from "./component/loginTC"
+import LoginPageThree from "./component/loginHR"
+import ReviewDetails from './component/viewPage'
+import ViewPageTwo from "./component/viewPageTC"
+import ViewPageThree from "./component/viewPageHR"
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route, Switch, BrowserRouter } from 'react-router-dom';
 
@@ -21,7 +20,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-
           <Route path="/" exact element={<Home />} />
           <Route path="/dashboard" exact element={<Dashboard />} />
           <Route path="/form" exact element={<Form />} />

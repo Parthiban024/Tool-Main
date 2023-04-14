@@ -39,14 +39,14 @@ const DashboardPage = () => {
                         <Card className="card_two">
                             <Card.Body>
                                 <Card.Title className="text-center">
-                                   System Issue
+                                    System Issue
                                 </Card.Title>
                                 <p className="text-center">(User's Only)</p>
                                 <Card.Text className="text-center">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </Card.Text>
                                 <div className="d-flex justify-content-center ">
-                                    <a className="btn btn-primary btn_hm" onClick={handleTicketButtonClick}>Rise a ticket</a>
+                                    <a className="btn btn-primary btn_hm" onClick={handleTicketButtonClick}>Raise a ticket</a>
                                 </div>
                             </Card.Body>
                         </Card>
@@ -58,21 +58,21 @@ const DashboardPage = () => {
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </Card.Text>
                                 <div className="d-flex justify-content-center">
-                                    <a className="btn btn-primary btn_hm" onClick={handleTicketButtonClickTwo}>Rise a ticket</a>
+                                    <a className="btn btn-primary btn_hm" onClick={handleTicketButtonClickTwo}>Raise a ticket</a>
                                 </div>
                             </Card.Body>
                         </Card>
                         <Card className="card_two">
                             <Card.Body>
                                 <Card.Title className="text-center">
-                                   HR Issue
+                                    HR Issue
                                 </Card.Title>
                                 <p className="text-center">(User's Only)</p>
                                 <Card.Text className="text-center">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </Card.Text>
                                 <div className="d-flex justify-content-center ">
-                                    <a className="btn btn-primary btn_hm" onClick={handleTicketButtonClickThree}>Rise a ticket</a>
+                                    <a className="btn btn-primary btn_hm" onClick={handleTicketButtonClickThree}>Raise a ticket</a>
                                 </div>
                             </Card.Body>
                         </Card>

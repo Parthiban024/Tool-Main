@@ -113,7 +113,7 @@ function Table() {
   const handleViewDetails = (id) => {
     const selectedReview = review.find((r) => r._id === id);
     navigate(`/reviewtwo/${id}`, { state: { review: selectedReview } });
-    };
+  };
 
   return (
     <div>
@@ -134,7 +134,7 @@ function Table() {
       </div>
       <div className='hm_sec_3'>
         <div className='container  d-flex justify-content-center '>
-        <table id="table-to-xls" className="table table-hover tablePage">
+          <table id="table-to-xls" className="table table-hover tablePage">
             <thead className="thead_bg">
               <tr>
                 <th>Employee Name</th>
@@ -163,41 +163,41 @@ function Table() {
                   <td>{r.descriptionTwo}</td>
                   <td>{r.issueDateTwo}</td>
                   <td>
-                <button
-                  className="btn btn-info btn-sm ms-1"
-                  onClick={() => handleViewDetails(r._id)}
-                >
-                  <i className="fa fa-eye"></i>
-                </button>
-              </td>
-                  <td>
-                  {review.map((review) => (
-          <tr key={review._id}>
-            <Link to={{ pathname: `/reviewtwo/${review._id}`, state: { review } }}>
-             
-            </Link>
-          </tr>
-        ))} 
-              <td>
                     <button
-                      className="btn btn-danger btn-sm ms-3"
-                      onClick={() => handleDelete(r._id)}
+                      className="btn btn-info btn-sm ms-1"
+                      onClick={() => handleViewDetails(r._id)}
                     >
-                      <i className="fa fa-trash"></i>
+                      <i className="fa fa-eye"></i>
                     </button>
                   </td>
+                  <td>
+                    {review.map((review) => (
+                      <tr key={review._id}>
+                        <Link to={{ pathname: `/reviewtwo/${review._id}`, state: { review } }}>
+
+                        </Link>
+                      </tr>
+                    ))}
+                    <td>
+                      <button
+                        className="btn btn-danger btn-sm ms-3"
+                        onClick={() => handleDelete(r._id)}
+                      >
+                        <i className="fa fa-trash"></i>
+                      </button>
+                    </td>
                   </td>
                   <td>
-                    <input type="checkbox" className="btn btn-primary btn-sm checkbox_main ms-3" onClick={() => handleAccept(r)}/>
-                      {/* <i className="fa fa-check"></i>
+                    <input type="checkbox" className="btn btn-primary btn-sm checkbox_main ms-3" onClick={() => handleAccept(r)} />
+                    {/* <i className="fa fa-check"></i>
                     </button> */}
                   </td>
                   <td>
                     <input type='checkbox' className="btn btn-success btn-sm ms-3" onClick={() => handleResolve(r)} />
-                      {/* <i className="fa fa-check-square"></i>
+                    {/* <i className="fa fa-check-square"></i>
                     </button> */}
                   </td>
-                  </tr>
+                </tr>
               ))}
             </tbody>
           </table>

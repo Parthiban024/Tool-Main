@@ -4,19 +4,21 @@ import Navbar from "./navbarPage"
 import Swal from "sweetalert2";
 import { Route, Routes, Navigate, Link, useNavigate } from "react-router-dom";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import TextField from "@mui/material/TextField";
+// import ReviewDetails from './viewPage';
+
 function Table() {
   const [review, setReviews] = useState([]);
 
   const navigate = useNavigate();
-
   useEffect(() => {
-    axios.get('http://localhost:8001/api/hrreview').then((response) => {
+    axios.get('http://localhost:8001/api/reviews').then((response) => {
       setReviews(response.data);
     });
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:8001/api/hrreview/${id}`).then(() => {
+    axios.delete(`http://localhost:8001/api/reviews/${id}`).then(() => {
       // remove the deleted review from the local state
       const updatedReviews = review.filter((r) => r._id !== id);
       setReviews(updatedReviews);
@@ -38,14 +40,14 @@ function Table() {
     });
   };
   const handleAccept = (ticket) => {
-    axios.post('http://localhost:8001/api/accepthr', ticket).then((res) => {
+    axios.post('http://localhost:8001/api/accept', ticket).then((res) => {
       // send email to user using nodemailer
       const emailData = {
-        to: ticket.emailIdThree,
+        to: ticket.emailId,
         subject: 'Ticket Accepted',
         text: 'Your ticket has been accepted by the IT team.'
       };
-      axios.post('http://localhost:8001/api/send-emailhr', emailData).then((res) => {
+      axios.post('http://localhost:8001/api/send-email', emailData).then((res) => {
         // show success message
         Swal.fire({
           title: 'Success',
@@ -73,16 +75,16 @@ function Table() {
       });
     });
   };
-  
+
   const handleResolve = (ticket) => {
-    axios.post('http://localhost:8001/api/resolvehr', ticket).then((res) => {
+    axios.post('http://localhost:8001/api/resolve', ticket).then((res) => {
       // send email to user using nodemailer
       const emailData = {
-        to: ticket.emailIdThree,
+        to: ticket.emailId,
         subject: 'Ticket Resolved',
         text: 'Your ticket has been resolved by the IT team.'
       };
-      axios.post('http://localhost:8001/api/send-emailhr', emailData).then((res) => {
+      axios.post('http://localhost:8001/api/send-email', emailData).then((res) => {
         // show success message
         Swal.fire({
           title: 'Success',
@@ -91,7 +93,7 @@ function Table() {
           confirmButtonText: 'OK'
         });
         // reload the page to update the table
-         }).catch(() => {
+      }).catch(() => {
         // show error message
         Swal.fire({
           title: 'Error',
@@ -112,28 +114,31 @@ function Table() {
   };
   const handleViewDetails = (id) => {
     const selectedReview = review.find((r) => r._id === id);
-    navigate(`/reviewthree/${id}`, { state: { review: selectedReview } });
-    };
+    navigate(`/review/${id}`, { state: { review: selectedReview } });
+  };
+
+
   return (
     <div>
       <Navbar />
+
       <div className='sec_two d-flex justify-content-center align-items-center'>
-        <h1>HR Panel</h1>
+        <h1>ADMIN PANEL</h1>
       </div>
       <div>
-      <ReactHTMLTableToExcel
-            id="test-table-xls-button"
-            className="btn btn-success btn-sm table_main"
-            table="table-to-xls"
-            filename="reviews"
-            sheet="reviews"
-            buttonText="Export to Excel"
-            excludeColumns="[5]"
-          />
-          </div>
+        <ReactHTMLTableToExcel
+          id="test-table-xls-button"
+          className="btn btn-success btn-sm table_main"
+          table="table-to-xls"
+          filename="reviews"
+          sheet="reviews"
+          buttonText="Export to Excel"
+          excludeColumns="[5]"
+        />
+      </div>
       <div className='hm_sec_3'>
         <div className='container  d-flex justify-content-center '>
-        <table id="table-to-xls" className="table table-hover tablePage">
+          <table id="table-to-xls" className="table table-hover tablePage">
             <thead className="thead_bg">
               <tr>
                 <th>Employee Name</th>
@@ -153,50 +158,50 @@ function Table() {
             <tbody>
               {review.map((r) => (
                 <tr key={r._id}>
-                  <td>{r.employeeNameThree}</td>
-                  <td>{r.employeeIdThree}</td>
-                  <td>{r.emailIdThree}</td>
-                  <td>{r.priorityThree}</td>
-                  <td>{r.systemNoThree}</td>
-                  <td>{r.systemTypeThree}</td>
-                  <td>{r.descriptionThree}</td>
-                  <td>{r.issueDateThree}</td>
+                  <td>{r.employeeName}</td>
+                  <td>{r.employeeId}</td>
+                  <td>{r.emailId}</td>
+                  <td>{r.priority}</td>
+                  <td>{r.systemNo}</td>
+                  <td>{r.systemType}</td>
+                  <td>{r.description}</td>
+                  <td>{r.issueDate}</td>
                   <td>
-                <button
-                  className="btn btn-info btn-sm ms-1"
-                  onClick={() => handleViewDetails(r._id)}
-                >
-                  <i className="fa fa-eye"></i>
-                </button>
-              </td>
-                  <td>
-                  {review.map((review) => (
-          <tr key={review._id}>
-            <Link to={{ pathname: `/reviewthree/${review._id}`, state: { review } }}>
-             
-            </Link>
-          </tr>
-        ))} 
-              <td>
                     <button
-                      className="btn btn-danger btn-sm ms-3"
-                      onClick={() => handleDelete(r._id)}
+                      className="btn btn-info btn-sm ms-1"
+                      onClick={() => handleViewDetails(r._id)}
                     >
-                      <i className="fa fa-trash"></i>
+                      <i className="fa fa-eye"></i>
                     </button>
                   </td>
+                  <td>
+                    {review.map((review) => (
+                      <tr key={review._id}>
+                        <Link to={{ pathname: `/review/${review._id}`, state: { review } }}>
+
+                        </Link>
+                      </tr>
+                    ))}
+                    <td>
+                      <button
+                        className="btn btn-danger btn-sm ms-3"
+                        onClick={() => handleDelete(r._id)}
+                      >
+                        <i className="fa fa-trash"></i>
+                      </button>
+                    </td>
                   </td>
                   <td>
-                    <input type="checkbox" className="btn btn-primary btn-sm checkbox_main ms-3" onClick={() => handleAccept(r)}/>
-                      {/* <i className="fa fa-check"></i>
+                    <input type="checkbox" className="btn btn-primary btn-sm checkbox_main ms-3" onClick={() => handleAccept(r)} />
+                    {/* <i className="fa fa-check"></i>
                     </button> */}
                   </td>
                   <td>
                     <input type='checkbox' className="btn btn-success btn-sm ms-3" onClick={() => handleResolve(r)} />
-                      {/* <i className="fa fa-check-square"></i>
+                    {/* <i className="fa fa-check-square"></i>
                     </button> */}
                   </td>
-                  </tr>
+                </tr>
               ))}
             </tbody>
           </table>
@@ -205,7 +210,5 @@ function Table() {
     </div>
   );
 }
-
-
 
 export default Table;
